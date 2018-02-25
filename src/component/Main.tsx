@@ -1,18 +1,38 @@
 import React from 'react'
 import { Greeting } from './Greeting'
 import { View } from 'react-native'
+import { styles } from './styles/styles'
 
 export namespace Main {
     export interface IProps {
     }
+    export interface IState {
+        showIt: boolean
+    }
 }
 
-export class Main extends React.Component<Main.IProps, any> {
+export class Main extends React.Component<Main.IProps, Main.IState> {
+    constructor(props: any) {
+        super(props)
+        this.state = {
+            showIt: true
+        }
+        setInterval( () => {
+            this.setState((prevState) => {
+                    return {
+                        ...this.state,
+                        showIt: !prevState.showIt
+                    }
+            })
+        }, 1000)
+    }
+
     public render() {
+        let { showIt } = this.state
+        let text = showIt ? 'resi Ich liebe dich!!' : ''
         return (
-            <View style={{alignItems: 'center'}}>
-                <Greeting name='sepp23434' />
-                <Greeting name='hugo' />
+            <View style={styles.MainView}>
+                <Greeting name={text} />
             </View>
         )
     }

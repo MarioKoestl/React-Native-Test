@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native'
+import { styles } from './styles/styles'
 
 export namespace Greeting {
     export interface IProps {
@@ -10,7 +11,7 @@ export namespace Greeting {
 export class Greeting extends React.Component<Greeting.IProps, any> {
     public render() {
         return (
-            <Text>Hello {this.props.name}</Text>
+            <Text style={styles.NameText}>Hello {this.props.name}</Text>
         )
     }
 }
