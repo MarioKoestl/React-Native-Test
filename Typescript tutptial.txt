@@ -1,0 +1,21 @@
+http://kerryritter.com/getting-started-with-react-native-typescript-and-gulp/
+
+-> install npm version 4
+
+-> install React Native Tools extensions
+-> npm install -g react-native-cli
+
+Install Setup Project
+-> npm install -g create-react-native-app
+Create new PrOject
+-> create-react-native-app NewProjectName
+
+Test it
+-> npm start
+
+Install gulp
+
+npm install --save gulp gulp-tslint gulp-typescript tslint typescript --dev
+
+Install typings
+-> npm install @types/react @types/react-native @types/jest --save-dev

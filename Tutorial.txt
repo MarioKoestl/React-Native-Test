@@ -1,0 +1,35 @@
+-> install npm version 4
+
+-> install React Native Tools extensions
+-> npm install -g react-native-cli
+
+Install Setup Project
+-> npm install -g create-react-native-app
+Create new PrOject
+-> create-react-native-app NewProjectName
+
+Test it
+-> npm start
+
+For Typescript:
+-> npm install rimraf concurrently --save-dev
+Create tsconfig.json: 
+-> "https://medium.com/@rintoj/react-native-with-typescript-40355a90a5d7"
+install typings for react react-native-app
+-> npm install @types/react @types/react-native @types/jest --save-dev
+Create src folder with a test Typescript file
+Add script to package.json
+-> 	"tsc": "tsc",
+    "clean": "rimraf artifacts",
+    "build": "npm run clean && npm run tsc --"
+
+Testing typescript configuration
+--> npm run build
+	artefacts folder should now contain the javascripts files from our Typescript files
+
+Add tslint configuration
+--> https://medium.com/@rintoj/react-native-with-typescript-40355a90a5d7
+
+Add linter script to package.json script
+--> install tslin extension for visual studio code
+-->  "lint": "tslint src/**/*.ts"
