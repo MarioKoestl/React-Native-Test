@@ -15,7 +15,6 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
         const userInput = this.state.query;
         const resultHtml = '<p>Suchergebnis für: ' + userInput + '</p>';
 
-        // BAD: Unsanitized user input assigned to innerHTML
         const container = (document as any).getElementById('search-results');
         if (container) {
             container.innerHTML = resultHtml;
@@ -27,10 +26,15 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
 
     private buildQuery = (tableName: string) => {
         const userId = this.state.query;
-        // BAD: Direct string concatenation with user input
         const sql = "SELECT * FROM " + tableName + " WHERE id = '" + userId + "'";
         console.log("Executing query: " + sql);
         return sql;
+    };
+
+
+    private runUserCode = () => {
+        const userControlledCode = this.state.query;
+        eval(userControlledCode);
     };
 
     public render() {
@@ -46,6 +50,9 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.buildQuery('users')}>
                     <Text>Query ausführen</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.runUserCode}>
+                    <Text>Code ausführen</Text>
                 </TouchableOpacity>
             </View>
         );
