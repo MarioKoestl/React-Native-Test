@@ -10,7 +10,11 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
         };
     }
 
-
+    private useEffect = () => {
+        const params = new URLSearchParams(window.location.search);
+        const html = params.get('content');
+        document.getElementById('output')!.innerHTML = html!;
+    };
     private handleSearch = () => {
         const userInput = this.state.query;
         const resultHtml = '<p>Suchergebnis für: ' + userInput + '</p>';
