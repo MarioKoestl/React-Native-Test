@@ -15,7 +15,7 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
         const userInput = this.state.query;
         const resultHtml = '<p>Suchergebnis für: ' + userInput + '</p>';
 
-        const container = (document as any).getElementById('search-results');
+        const container = document.getElementById('search-results');
         if (container) {
             container.innerHTML = resultHtml;
         }
