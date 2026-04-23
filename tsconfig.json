@@ -1,23 +1,26 @@
 {
   "compilerOptions": {
-      "target": "es2015",
-      "module": "es2015",
-      "jsx": "react",
-      "outDir": "build",
-      "rootDir": "src",
-      "allowSyntheticDefaultImports": true,
-      "noImplicitAny": true,
-      "experimentalDecorators": true,
-      "preserveConstEnums": true,
-      "allowJs": true,
-      "sourceMap": true,
-      "baseUrl": ".",
-      "paths": {
-          "*": ["./src/*"]
-      },
-      "types": [ 
-          "react", 
-          "react-native"
+    "target": "es2015",
+    "module": "es2015",
+    "jsx": "react",
+    "outDir": "build",
+    "rootDir": "src",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "preserveConstEnums": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "./src/*"
       ]
-  }
+    }
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "extends": "expo/tsconfig.base"
 }

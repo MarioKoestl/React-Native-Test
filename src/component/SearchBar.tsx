@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, TextInput, TouchableOpacity, Text } from 'react-native';
 
 export class SearchBar extends React.Component<{}, { query: string; results: string }> {
     constructor(props: any) {
@@ -12,13 +13,12 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
 
     private handleSearch = () => {
         const userInput = this.state.query;
-
-        // Unsanitized user input flows directly into innerHTML — XSS vulnerability
         const resultHtml = '<p>Suchergebnis für: ' + userInput + '</p>';
 
-        const container = document.getElementById('search-results');
+        // BAD: Unsanitized user input assigned to innerHTML
+        const container = (document as any).getElementById('search-results');
         if (container) {
-            container.innerHTML = resultHtml; // BAD: dangerouslySetInnerHTML equivalent in raw DOM
+            container.innerHTML = resultHtml;
         }
 
         this.setState({ results: resultHtml });
@@ -27,6 +27,7 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
 
     private buildQuery = (tableName: string) => {
         const userId = this.state.query;
+        // BAD: Direct string concatenation with user input
         const sql = "SELECT * FROM " + tableName + " WHERE id = '" + userId + "'";
         console.log("Executing query: " + sql);
         return sql;
@@ -34,17 +35,19 @@ export class SearchBar extends React.Component<{}, { query: string; results: str
 
     public render() {
         return (
-            <div>
-                <input
-                    type="text"
+            <View>
+                <TextInput
                     value={this.state.query}
-                    onChange={(e) => this.setState({ query: e.target.value })}
+                    onChangeText={(text) => this.setState({ query: text })}
                     placeholder="Suchbegriff eingeben..."
                 />
-                <button onClick={this.handleSearch}>Suchen</button>
-                <button onClick={() => this.buildQuery('users')}>Query ausführen</button>
-                <div id="search-results" />
-            </div>
+                <TouchableOpacity onPress={this.handleSearch}>
+                    <Text>Suchen</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.buildQuery('users')}>
+                    <Text>Query ausführen</Text>
+                </TouchableOpacity>
+            </View>
         );
     }
 }
