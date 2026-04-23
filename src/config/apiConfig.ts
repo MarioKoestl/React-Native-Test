@@ -6,8 +6,6 @@ const API_KEY = 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6';
 const DB_PASSWORD = 'SuperGeheimesPasswort123!';
 
 
-const GITHUB_TOKEN = 'ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1234';
-
 
 export const dbConfig = {
     host: 'prod-db.example.com',
