@@ -7,9 +7,9 @@
     "@types/react": "^19.2.14",
     "@types/react-native": "^0.73.0",
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
-    "babel-preset-expo": "^55.0.18",
+    "babel-preset-expo": "^55.0.21",
     "concurrently": "^9.2.1",
-    "jest-expo": "55.0.16",
+    "jest-expo": "55.0.17",
     "react-native-scripts": "2.0.1",
     "react-test-renderer": "19.2.5",
     "rimraf": "^6.1.3"
